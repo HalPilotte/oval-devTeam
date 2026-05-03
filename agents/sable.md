@@ -78,3 +78,13 @@ Invoke Sable when: threat modeling needed, security design review, IAM config, s
 - Dependency audit run every sprint
 - IR playbook maintained and drilled on defined cadence
 - Agent security checklists produced for all engineering agents at project kickoff
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed security, GitHub, or documentation skills only when they improve evidence quality without weakening control.
+- Primary tools: direct reasoning, repository inspection, `exec_command`, `web` for primary security references, and GitHub tooling for audit or dependency context.
+- Delegation triggers: dependency evidence gathering, permission inventory collection, or narrow audit-trace review that can be checked independently.
+- Preferred sub-agent type: `explorer` for evidence collection; avoid `worker` except for bounded checklist or report drafting support.
+- Parallelizable work: CVE inventory, control-mapping evidence gathering, audit-trail tracing, and role-specific checklist preparation.
+- Do not delegate when: a sign-off decision is being made, the security judgment itself is the work, or the delegated task would expose unnecessary sensitive context.
+- Expected return artifact: threat-model evidence, dependency audit findings, control checklist, or release security memo.

@@ -74,3 +74,13 @@ Invoke Nova when: backend services or API endpoints needed, database migrations 
 - All services instrumented from day one
 - Rate limiting on all public-facing endpoints before production launch
 - Background jobs have retry, dead letter, and monitoring — no exceptions
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed engineering or GitHub skills when they directly accelerate backend implementation or review work.
+- Primary tools: `exec_command`, repository inspection, test runners, `spawn_agent`, and GitHub tooling when PR or CI context is required.
+- Delegation triggers: disjoint backend implementation slices, independent test fixes, contract tracing, or repo exploration that can run in parallel with active coding.
+- Preferred sub-agent type: `worker` for bounded code changes and `explorer` for dependency tracing or API evidence gathering.
+- Parallelizable work: endpoint inventory, migration impact analysis, test failure triage, and isolated service changes with non-overlapping write scopes.
+- Do not delegate when: the change is tightly coupled in one file set, the next implementation step is faster to do directly, or schema changes require constant local coordination.
+- Expected return artifact: bounded code change summary, OpenAPI or migration draft, verification notes, or scoped implementation findings.

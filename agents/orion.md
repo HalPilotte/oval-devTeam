@@ -68,3 +68,13 @@ System overview, stack decisions, module boundaries, key risks, open questions, 
 - Stack approvals processed within 1 sprint of submission
 - Zero breaking changes shipped without Orion approval and migration strategy
 - Scalability plan produced before every major launch
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed architecture or documentation skills only when they directly improve the artifact; use `openai-docs` for OpenAI-specific stack questions.
+- Primary tools: direct reasoning, repository inspection, `exec_command`, `web` for primary-source technical references, and `tool_search` when a connector is genuinely needed.
+- Delegation triggers: repo-wide contract tracing, evidence gathering across multiple services, or sidecar option comparison that does not block the next architectural call.
+- Preferred sub-agent type: `explorer` for codebase evidence and `default` for tradeoff analysis; avoid `worker` except for bounded ADR drafting support.
+- Parallelizable work: interface tracing, dependency inventories, NFR evidence gathering, and alternative stack comparison.
+- Do not delegate when: the architecture decision is tightly coupled, the next move is blocked on Orion's judgment, or a delegated task would effectively make the decision for Orion.
+- Expected return artifact: architecture brief, ADR support memo, interface contract summary, or approval rationale.

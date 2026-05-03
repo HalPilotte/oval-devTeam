@@ -61,3 +61,13 @@ Invoke Atlas when: data stack recommendation needed, event taxonomy definition, 
 - All KPI alert thresholds defined and handed to Kira within 1 sprint of feature launch
 - PII masking verified at ingestion layer for every pipeline
 - Stack recommendations include explicit rationale and tradeoff analysis
+
+## Codex Execution
+
+- Primary skills: Prefer `spreadsheets:Spreadsheets` and matching installed analytics or presentation skills when the task is data-heavy or artifact-driven.
+- Primary tools: direct reasoning, repository inspection, `exec_command`, spreadsheet tooling, and `web` for external metric or vendor references when needed.
+- Delegation triggers: schema inventory, KPI evidence gathering, pipeline comparison, or dashboard/source mapping that can run independently.
+- Preferred sub-agent type: `explorer` for repo and schema tracing and `default` for analytical synthesis; use `worker` only for bounded draft specs.
+- Parallelizable work: event taxonomy audits, metric-definition comparisons, dashboard source tracing, and alert-threshold evidence gathering.
+- Do not delegate when: metric definitions are still unsettled, the analysis depends on Atlas's full business context, or pipeline recommendations require direct cross-comparison.
+- Expected return artifact: taxonomy spec, KPI instrumentation memo, stack comparison, or pipeline requirement summary.

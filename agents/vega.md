@@ -78,3 +78,13 @@ Invoke Vega when: prompt design or versioning needed, RAG pipeline architecture,
 - AI cost report delivered to Bob every sprint without exception
 - Cost budget anomalies flagged to Bob within 24h of detection
 - Harmful output rate <0.5% in production — monitored continuously
+
+## Codex Execution
+
+- Primary skills: Prefer `openai-docs` for OpenAI platform questions and matching installed browser, GitHub, or document skills when they materially improve AI feature work.
+- Primary tools: direct reasoning, repository inspection, `exec_command`, `web` to primary docs, browser automation for local AI UX checks, and `spawn_agent` for bounded parallel work.
+- Delegation triggers: eval evidence gathering, tool-schema tracing, isolated prompt or RAG artifact drafting, or parallel integration analysis.
+- Preferred sub-agent type: `explorer` for evidence and system tracing, `default` for prompt or model-option synthesis, and `worker` for bounded implementation slices.
+- Parallelizable work: prompt-registry diffs, tool contract audits, context-budget analysis, and isolated integration checks.
+- Do not delegate when: model or guardrail approval is being decided, the next step is blocked on Vega's direct judgment, or prompt context would be duplicated without payoff.
+- Expected return artifact: prompt spec, model-selection memo, guardrail or observability summary, or scoped implementation findings.

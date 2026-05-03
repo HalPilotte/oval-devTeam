@@ -64,11 +64,56 @@ This guide is the canonical workflow source for the AI team. Agent definitions l
 
 ### Bob Intake Record
 
-`Request | Goal | Success criteria | Lane | Tier | Required agents now | Skipped agents + reason | Hard gates | Artifacts to produce | Next checkpoint`
+`Request | Goal | Success criteria | Lane | Tier | Required roles now | Execution mode | Skipped roles + reason | Hard gates | Artifacts to produce | Next checkpoint`
 
 ### Agent Handoff Contract
 
 `Objective | Required inputs | Expected output | Blocker threshold | Route-back-to-Bob rule`
+
+### Delegation Handoff
+
+`Objective | Why delegated | Required inputs | Allowed tools/skills | Expected output | Stop condition | Route-back rule`
+
+---
+
+## Execution Model
+
+### Logical Role vs Executable Mechanism
+
+- Named roles such as **Bob**, **Nova**, and **Sable** are logical personas for routing, authority, and artifact ownership.
+- Named roles are not literal Codex sub-agent types.
+- When delegation is used in Codex, sub-agents must be `explorer`, `worker`, or `default`.
+- `Bob` owns routing and delegation choices by default unless the user explicitly overrides that authority.
+
+### Execution Decision Sequence
+
+After intake, use this decision path:
+
+`classify -> choose role(s) -> decide direct vs skill vs tool vs sub-agent -> execute -> synthesize`
+
+Execution mode should be captured in the intake record as one of:
+
+- `direct`
+- `skill`
+- `tool`
+- `sub-agent`
+- `hybrid`
+
+### Delegation Defaults
+
+- Delegation default is `selective`.
+- Prefer direct execution for trivial work, single-step answers, and tasks blocked on the immediate next fact.
+- Prefer skills when an installed workflow clearly matches the task.
+- Prefer direct tools for short, local, or mechanical work.
+- Prefer sub-agents only when the work is bounded, parallelizable, or context-heavy enough to justify delegation.
+- Default maximum parallelism is **2 active sub-agents** unless the work is clearly `T3 major` and decomposes cleanly.
+
+### No-Delegation Cases
+
+- Single-step answers
+- Tasks whose next action is blocked on the delegated result
+- Tightly coupled edits in the same file set
+- Work where delegation would duplicate context instead of reducing it
 
 ---
 
@@ -94,6 +139,15 @@ This guide is the canonical workflow source for the AI team. Agent definitions l
 - `T1 quick work` — Bob routes directly to the owning specialist. No forced PRD, architecture, or compliance ceremony unless risk, production impact, or policy sensitivity triggers it.
 - `T2 standard work` — lightweight discovery/specification first, then implementation and validation.
 - `T3 major work` — discovery, architecture, security/compliance framing, implementation, validation, and release planning are all explicit checkpoints.
+
+### Lane-Level Execution Policy
+
+- `feature` — delegate repo exploration and disjoint implementation slices selectively; avoid spawning if one specialist can complete the next step directly.
+- `bug` — prefer direct reproduction first; delegate only if investigation branches or fix and regression work can split cleanly.
+- `incident` — minimize delegation overhead; use delegation only for bounded sidecars such as scoped log analysis or evidence gathering.
+- `ai_feature` — use Vega and Aster as logical roles, with explicit prompt, eval, guardrail, and tool-selection workflows before release.
+- `release` — keep control centralized under Hermes; delegate only checklist evidence gathering or scoped verification.
+- `docs` — delegate drafting or source gathering only when those tasks are independent and low-coupling.
 
 ### New Product / Major Feature Sequence
 
@@ -153,11 +207,11 @@ This sequence replaces the old universal startup order. `Orion`, `Ava`, `Pixel`,
 
 ## Validation Scenarios
 
-- Small copy or UI tweak: Bob routes to Lyra only and explicitly skips Ava, Orion, Quinn, and Sable unless risk or release impact is present.
-- Standard UI + API feature: Bob routes to Ava, Quinn, Lyra, Nova, and Pixel; Orion and Sable join only if triggered by architecture or security risk.
-- New AI feature: Bob routes to Vega, Aster, and Quinn first; Sable and Hermes become mandatory before production release.
-- Sev-1 outage: Bob routes to Finch and Kira immediately; Ava and Pixel stay out unless product scope changes.
-- Release-only change: Bob starts with Hermes, Quinn, and Sable and does not force discovery agents into the lane.
+- Small copy or UI tweak: Bob routes to Lyra only and explicitly skips Ava, Orion, Quinn, and Sable unless risk or release impact is present. Execution stays direct or uses one `explorer` if evidence is needed.
+- Standard UI + API feature: Bob routes to Ava, Quinn, Lyra, Nova, and Pixel; Orion and Sable join only if triggered by architecture or security risk. Exploration may parallelize, but implementation stays bounded.
+- New AI feature: Bob routes to Vega, Aster, and Quinn first; Sable and Hermes become mandatory before production release. Skills, tools, and eval artifacts are explicit.
+- Sev-1 outage: Bob routes to Finch and Kira immediately; Ava and Pixel stay out unless product scope changes. Delegation stays minimal and scoped.
+- Release-only change: Bob starts with Hermes, Quinn, and Sable and does not force discovery agents into the lane. Any delegation is evidence gathering or scoped verification only.
 - User asks to skip Quinn or Sable: Bob records the override request, warns about the binding gate, and preserves the gate logic.
 
 ---

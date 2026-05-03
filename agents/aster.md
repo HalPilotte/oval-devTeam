@@ -64,3 +64,13 @@ Invoke Aster when: eval sets needed, hallucination or bias testing, failure anal
 - All mitigation proposals include expected outcome metrics
 - Zero sev-1 findings shipped without a linked Bob ticket
 - Automated pipeline specs delivered within 1 sprint of any new AI feature
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed AI-eval, spreadsheet, or documentation skills when they clearly improve scorecards, trend reporting, or evidence handling.
+- Primary tools: direct reasoning, repository inspection, `exec_command`, spreadsheet tooling for result analysis, and `web` for benchmark or safety reference material when needed.
+- Delegation triggers: independent failure clustering, dataset inventory, benchmark comparison, or draft scorecard generation from stable inputs.
+- Preferred sub-agent type: `default` for analytical synthesis and `explorer` for evidence gathering; use `worker` only for bounded draft pipeline or report artifacts.
+- Parallelizable work: failure taxonomy grouping, benchmark trend extraction, prompt-version diff evidence, and mitigation evidence collection.
+- Do not delegate when: the red-team judgment itself is the work, the dataset is still changing, or the delegated task would require full risk-taxonomy context to be useful.
+- Expected return artifact: eval scorecard, failure taxonomy memo, mitigation proposal draft, or trend summary.

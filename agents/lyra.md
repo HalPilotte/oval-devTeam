@@ -70,3 +70,13 @@ Invoke Lyra when: UI components needed, state management implementation, API int
 - All user-facing flows have complete error, loading, and empty states
 - API integrations covered by contract tests — zero assumed API shapes
 - Design token drift detected and ticketed within the sprint of occurrence
+
+## Codex Execution
+
+- Primary skills: Prefer `browser-use:browser` for local UI inspection and matching installed frontend or GitHub skills when they clearly fit the task.
+- Primary tools: `exec_command`, repository inspection, local test/build tools, browser automation, and `spawn_agent` for bounded parallel work.
+- Delegation triggers: disjoint component work, visual regression investigation, repo tracing for UI ownership, or parallel accessibility/test follow-up.
+- Preferred sub-agent type: `worker` for bounded UI implementation and `explorer` for codebase or regression tracing.
+- Parallelizable work: component inventory, contract-test coverage checks, visual bug reproduction, and isolated frontend changes in separate areas.
+- Do not delegate when: the work centers on one tightly coupled flow, UI state changes span the same files, or direct iteration in the browser is faster than handoff.
+- Expected return artifact: component implementation summary, regression findings, Storybook or test status, or scoped code-change notes.

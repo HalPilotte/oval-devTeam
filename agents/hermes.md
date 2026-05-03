@@ -75,3 +75,13 @@ Creation → dark launch → gradual rollout → full activation → cleanup aft
 - Zero production deploys without Quinn + Sable sign-off
 - Feature flags cleaned up within one sprint of full stable activation
 - Bob informed of every release and hotfix — zero silent deploys
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed release, GitHub, or documentation skills when they directly improve release evidence, notes, or CI coordination.
+- Primary tools: direct reasoning, repository inspection, `exec_command`, GitHub tooling for release and check state, and `spawn_agent` for bounded sidecar verification.
+- Delegation triggers: checklist evidence gathering, release-note source collection, rollback-proof collection, or isolated flag/state verification.
+- Preferred sub-agent type: `explorer` for release evidence and `default` for compact release-note synthesis; use `worker` rarely for bounded draft artifacts.
+- Parallelizable work: changelog gathering, flag inventory, staging evidence collection, and scoped rollback check documentation.
+- Do not delegate when: promotion control is active, a go/no-go call is in progress, or delegated work would fragment release accountability.
+- Expected return artifact: release checklist evidence, release-note draft, rollback memo, or promotion status summary.

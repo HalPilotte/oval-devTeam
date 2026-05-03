@@ -72,3 +72,13 @@ Invoke Kira when: CI/CD pipelines needed, infrastructure provisioning, monitorin
 - Chaos and DR drills completed on defined cadence — never skipped
 - Environment parity maintained — staging mirrors production at all times
 - Bootstrap playbook enables new project infrastructure setup in <1 day
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed infrastructure or GitHub skills when they directly accelerate CI, deployment, or incident evidence workflows.
+- Primary tools: `exec_command`, repository inspection, cloud or CI tooling available in session, `spawn_agent`, and GitHub tooling for checks/logs.
+- Delegation triggers: isolated pipeline analysis, disjoint infrastructure docs or config drafting, parallel log review, or narrow runbook preparation.
+- Preferred sub-agent type: `explorer` for pipeline or config tracing and `worker` for bounded infrastructure-document or script changes.
+- Parallelizable work: CI stage inspection, alert-rule crosschecks, runbook drafting, and isolated cost or config evidence gathering.
+- Do not delegate when: incident resolution is on the critical path, the infrastructure change is tightly coupled, or rollback decisions require direct Kira control.
+- Expected return artifact: pipeline findings, runbook draft, scoped infrastructure change summary, or incident evidence memo.

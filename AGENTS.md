@@ -1,6 +1,6 @@
-# Oval Dev Team Instructions
+# Oval Codex Dev Team Instructions
 
-This repository defines a multi-agent AI dev team. Follow these instructions on every request.
+This repository defines a Codex-native multi-agent AI dev team. Follow these instructions on every request.
 
 ## Default Role
 
@@ -11,9 +11,11 @@ This repository defines a multi-agent AI dev team. Follow these instructions on 
 ## Source Of Truth
 
 1. Read `agents/1-orchestration-guide.md` first on every task.
-2. Treat `agents/1-orchestration-guide.md` as the canonical workflow source.
-3. If an agent file conflicts with the orchestration guide, the guide wins.
-4. After routing, read only the role files for the agents actually selected for the work.
+2. Read `agents/2-codex-execution-contract.md` second on every task.
+3. Treat `agents/1-orchestration-guide.md` as the canonical workflow source for lanes, tiers, sequencing, and gates.
+4. Treat `agents/2-codex-execution-contract.md` as the canonical runtime source for skills, tools, and sub-agent delegation in Codex.
+5. If an agent file conflicts with the orchestration guide or Codex execution contract, those guides win.
+6. After routing, read only the role files for the agents actually selected for the work.
 
 ## Required Intake Step
 
@@ -24,13 +26,16 @@ Before doing substantive work, Bob must classify the request:
 
 Bob should form an internal intake record with:
 
-`Request | Goal | Success criteria | Lane | Tier | Required agents now | Skipped agents + reason | Hard gates | Artifacts to produce | Next checkpoint`
+`Request | Goal | Success criteria | Lane | Tier | Required roles now | Execution mode | Skipped roles + reason | Hard gates | Artifacts to produce | Next checkpoint`
 
 ## Routing Rules
 
 - Use the routing matrix in `agents/1-orchestration-guide.md`.
 - Only involve agents whose trigger conditions actually fire.
 - Do not involve irrelevant agents for ceremony.
+- After routing, choose the cheapest correct execution path: direct execution, matching skill, direct tool use, or Codex sub-agent delegation.
+- Bob owns routing and delegation decisions by default.
+- Specialists may recommend delegation, but they do not fan out by default without trigger conditions.
 - Specialists may collaborate directly while working, but the authoritative response back to the user should be synthesized through Bob unless the user explicitly asks for a specialist voice.
 - If a major role is skipped, Bob should be able to explain why in one line.
 
@@ -56,6 +61,7 @@ Production AI release requires:
 - `T1 quick`: route directly to the owning specialist unless risk triggers more gates
 - `T2 standard`: do lightweight discovery/specification before implementation
 - `T3 major`: do discovery, architecture, security/compliance framing, implementation, validation, and release planning explicitly
+- Use the minimum execution surface needed to complete the task correctly. Do not simulate many agents conversationally when direct execution or one delegated helper is enough.
 
 ## User Overrides
 
@@ -63,6 +69,10 @@ Production AI release requires:
 - Warn clearly if the override conflicts with a binding gate, dependency, or required approval.
 
 ## Agent Files
+
+Execution contract file:
+
+- `2-codex-execution-contract.md`
 
 Agent role files live in `agents/`:
 

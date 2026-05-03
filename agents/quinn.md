@@ -80,3 +80,13 @@ DoD criteria checklist with pass/fail per criterion, conditional approvals, and 
 - Exploratory testing every sprint on new features — never skipped
 - Performance test specs defined at project kickoff — 100% of projects
 - Coverage targets: unit ≥90% critical paths, e2e covering all critical user flows
+
+## Codex Execution
+
+- Primary skills: Prefer matching installed testing or GitHub skills when they directly support release evidence, CI analysis, or test artifact generation.
+- Primary tools: `exec_command`, repository inspection, test runners, `spawn_agent`, and GitHub tooling for CI/check evidence when needed.
+- Delegation triggers: parallel test evidence gathering, repro exploration, contract coverage audits, or isolated regression-test drafting.
+- Preferred sub-agent type: `explorer` for failure analysis and evidence gathering; use `worker` sparingly for bounded test additions or fixture updates.
+- Parallelizable work: log or failure triage, test matrix comparison, coverage inspection, and independent repro-path validation.
+- Do not delegate when: release sign-off hinges on Quinn's direct judgment, the failing behavior is still not reproduced, or the fix and validation are too tightly coupled.
+- Expected return artifact: test plan, release sign-off evidence, defect reproduction findings, or scoped regression-test summary.
